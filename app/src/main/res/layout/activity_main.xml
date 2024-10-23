@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/imgVp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/img1">
+
+        <com.hfc.manager.ScaleImageView
+            android:id="@+id/img3"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test3" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp">
+
+            <com.hfc.manager.ScaleImageView
+                android:id="@+id/img34"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/test4" />
+        </FrameLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/imgRv"
+        android:layout_width="300dp"
+        android:background="@android:color/white"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/imgVp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDrag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textColor="#709742"
+        android:padding="5dp"
+        android:background="@drawable/item_bg"
+        android:text="拖拽文案"
+        android:textSize="30sp" />
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+<!--    android:sharedUserId="android.uid.system"-->
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.SEND" />
+            <data android:mimeType="*/*" />
+        </intent>
+    </queries>
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.HfcManager"
+        tools:targetApi="31">
+       <!-- <meta-data
+            android:name="xposedmodule" android:value="true"/>
+        <meta-data
+            android:name="xposedminversion" android:value="93"/>
+        <meta-data
+            android:name="xposeddescription" android:value="hook长按事件"/>-->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".HfcService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.hfc.action.DRAG_DROP" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".HfcBootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".HfcManagerReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="action.hfc.show" />
+                <action android:name="action.hfc.hide" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
